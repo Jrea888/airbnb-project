@@ -1,10 +1,11 @@
 import React, { memo } from "react";
+import { AppFooterWrapper } from "./style";
 
 const AppFooter = memo(() => {
     return (
-        <div className="app-footer">
+        <AppFooterWrapper>
             <h2>AppFooter</h2>
-        </div>
+        </AppFooterWrapper>
     );
 });
 
