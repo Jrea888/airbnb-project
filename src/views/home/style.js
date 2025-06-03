@@ -5,8 +5,9 @@ export const HomeWrapper = styled.div`
     height: auto;
 
     .home-content {
-        width: ${props => props.theme.width.width_1920};
         height: 800px;
         margin: 0 auto;
+        margin-top: 30px;
+        ${props => props.theme.mixin.mediaWidth}
     }
 `

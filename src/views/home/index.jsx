@@ -4,6 +4,8 @@ import { fetchHomeGoodPrice } from "@/store/modules/home";
 
 import {HomeWrapper} from './style'
 import CategoryInfo from "./component/category-info";
+import HomeBanner from "./component/home-banner";
+import SectionHeader from "@/components/section-header";
 
 const HomePage = memo(() => {
     // 发送网络数据
@@ -21,8 +23,10 @@ const HomePage = memo(() => {
 
     return (
         <HomeWrapper>
+            <HomeBanner />
+
             <div className="home-content">
-                <h2>HomePage - {goodPriceInfo.title}</h2>
+                <SectionHeader title={goodPriceInfo.title} />
             </div>
 
             {/* 分类信息 */}

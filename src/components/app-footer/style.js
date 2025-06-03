@@ -6,7 +6,6 @@ export const AppFooterWrapper = styled.div`
     background-color: #f7f7f7;
 
     .footer-list {
-        width: ${(props) => props.theme.width.width_1920};
         margin: 0 auto;
         padding: 48px 0;
         box-sizing: border-box;
@@ -14,6 +13,7 @@ export const AppFooterWrapper = styled.div`
         display: grid;
         column-gap: 16px;
         grid-template-columns: repeat(16, minmax(0, 1fr));
+        ${props => props.theme.mixin.mediaWidth}
 
         .footer-column {
             grid-column: span 5;
@@ -45,11 +45,11 @@ export const AppFooterWrapper = styled.div`
     }
 
     .footer-info {
-        width: ${(props) => props.theme.width.width_1920};
         margin: 0 auto;
         padding: 24px 0;
         box-sizing: border-box;
         border-top: 1px solid ${(props) => props.theme.hover.color};
+        ${props => props.theme.mixin.mediaWidth}
 
         .top {
             display: flex;

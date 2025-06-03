@@ -1,7 +1,8 @@
 import React, { memo } from "react";
 import styleStrToObject from "./utils";
 
-const IconSearch = memo(() => {
+const IconSearch = memo((props) => {
+    const {height= 16, width= 16} = props
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -10,7 +11,7 @@ const IconSearch = memo(() => {
             role="presentation"
             focusable="false"
             style={styleStrToObject(
-                "display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 4; overflow: visible;"
+                `display: block; fill: none; height: ${height}px; width: ${width}px; stroke: currentcolor; stroke-width: 4; overflow: visible;`
             )}
         >
             <path
