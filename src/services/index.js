@@ -1,3 +1,1 @@
-import serveRequest from "./service-request";
-
-export default serveRequest;
+export * from './service-home'

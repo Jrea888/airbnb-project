@@ -8,10 +8,20 @@ const theme = {
         secondaryColor: "#222",
         tertiaryColor: "#6A6A6A",
     },
+    font: {
+        fontFamily: `${'Airbnb Cereal VF', 'Circular', '-apple-system', 'BlinkMacSystemFont', 'Roboto', 'Helvetica Neue', 'sans-serif'}`,
+    },
+    hover: {
+        color: "#ebebeb",
+    },
     size: {
         fontSize_12: "12px",
         fontSize_14: "14px",
         fontSize_16: "16px",
+    },
+    width: {
+        width_100: "100%",
+        width_1920: "1920px",
     },
     mixin: {
         boxShadow: `

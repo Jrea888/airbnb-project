@@ -7,9 +7,11 @@ import HeaderRight from "./component/header-right";
 const AppHeader = memo(() => {
     return (
         <AppHeaderWrapper>
-            <HeaderLeft />
-            <HeaderCenter />
-            <HeaderRight />
+            <div className="header-content">
+                <HeaderLeft />
+                <HeaderCenter />
+                <HeaderRight />
+            </div>
         </AppHeaderWrapper>
     );
 });

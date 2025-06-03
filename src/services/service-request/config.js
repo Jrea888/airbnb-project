@@ -1,5 +1,5 @@
 const TIME_OUT = 10000;
 
-const BASE_URL = "https://airbnb-project-5d9f9-default-rtdb.firebaseio.com";
+const BASE_URL = "http://codercba.com:1888/airbnb/api";
 
 export { TIME_OUT, BASE_URL };
