@@ -10,6 +10,7 @@ export const SectionHeaderWrapper = styled.div`
     }
 
     .sub-title {
-        
+        font-size: 16px;
+        margin-bottom: 20px;
     }
 `;

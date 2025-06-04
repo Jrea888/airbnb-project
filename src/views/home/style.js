@@ -4,7 +4,7 @@ export const HomeWrapper = styled.div`
     width: 100%;
     height: auto;
 
-    .home-content {
+    > .home-content {
         height: auto;
         margin: 0 auto;
         margin-top: 30px;

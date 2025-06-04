@@ -4,10 +4,10 @@ import { SectionRoomsWrapper } from "./style";
 import RoomItem from "../room-item";
 
 const SectionRooms = memo((props) => {
-    const { roomList = [] } = props;
+    const { roomList = [], column = 4} = props;
 
     return (
-        <SectionRoomsWrapper>
+        <SectionRoomsWrapper column={column}>
             {
                 roomList.slice(0, 8).map(item => {
                     return <RoomItem key={item.id} itemData={item} />;
@@ -18,6 +18,7 @@ const SectionRooms = memo((props) => {
 });
 
 SectionRooms.propTypes = {
+    column: PropTypes.number,
     roomList: PropTypes.array,
 };
 export default SectionRooms;

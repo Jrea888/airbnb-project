@@ -1,4 +1,4 @@
-import React, {Suspense} from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -14,12 +14,12 @@ import "@/assets/styles/index.less";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <Suspense fallback="loading">
-        <BrowserRouter>
-            <Provider store={store}>
-                <ThemeProvider theme={theme}>
+        <Provider store={store}>
+            <ThemeProvider theme={theme}>
+                <BrowserRouter>
                     <App />
-                </ThemeProvider>
-            </Provider>
-        </BrowserRouter>
+                </BrowserRouter>
+            </ThemeProvider>
+        </Provider>
     </Suspense>
 );
