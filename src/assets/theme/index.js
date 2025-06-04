@@ -67,8 +67,16 @@ const theme = {
                 width: 1780px;
             }
 
-            @media screen and (min-width: 2000px) and (max-width: 2200px) {
+            @media screen and (min-width: 2000px) and (max-width: 2300px) {
                 width: 1880px;
+            }
+
+            @media screen and (min-width: 2300px) and (max-width: 2500px) {
+                width: 1980px;
+            }
+
+            @media screen and (min-width: 2500px) and (max-width: 2900px) {
+                width: 2080px;
             }
         `
     },

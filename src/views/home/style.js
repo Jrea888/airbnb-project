@@ -5,7 +5,7 @@ export const HomeWrapper = styled.div`
     height: auto;
 
     .home-content {
-        height: 800px;
+        height: auto;
         margin: 0 auto;
         margin-top: 30px;
         ${props => props.theme.mixin.mediaWidth}

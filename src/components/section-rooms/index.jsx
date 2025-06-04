@@ -1,18 +1,23 @@
 import PropTypes from "prop-types";
 import React, { memo } from "react";
 import { SectionRoomsWrapper } from "./style";
+import RoomItem from "../room-item";
 
 const SectionRooms = memo((props) => {
-    const { list } = props;
+    const { roomList = [] } = props;
 
     return (
         <SectionRoomsWrapper>
-            <div>SectionRooms</div>
+            {
+                roomList.slice(0, 8).map(item => {
+                    return <RoomItem key={item.id} itemData={item} />;
+                })
+            }
         </SectionRoomsWrapper>
     );
 });
 
 SectionRooms.propTypes = {
-    list: PropTypes.array,
+    roomList: PropTypes.array,
 };
 export default SectionRooms;

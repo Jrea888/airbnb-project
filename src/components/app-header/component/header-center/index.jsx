@@ -1,7 +1,6 @@
 import React, { memo } from "react";
 import { HeaderCenterWrapper } from "./style";
 import IconSearch from "@/assets/svg/icon_search";
-import VideoHouse from "@/assets/video/video-house";
 
 const HeaderCenter = memo(() => {
     return (

@@ -6,6 +6,7 @@ import {HomeWrapper} from './style'
 import CategoryInfo from "./component/category-info";
 import HomeBanner from "./component/home-banner";
 import SectionHeader from "@/components/section-header";
+import SectionRooms from "@/components/section-rooms";
 
 const HomePage = memo(() => {
     // 发送网络数据
@@ -27,6 +28,7 @@ const HomePage = memo(() => {
 
             <div className="home-content">
                 <SectionHeader title={goodPriceInfo.title} />
+                <SectionRooms roomList={goodPriceInfo.list} />
             </div>
 
             {/* 分类信息 */}
