@@ -19,3 +19,13 @@ export async function getHomeDiscountHotData() {
     const result = await serviceRequest.get({ url: '/home/discount' });
     return result;
 }
+
+export async function getToGoInspirationData() {
+    const result = await serviceRequest.get({ url: '/home/longfor' });
+    return result;
+}
+
+export async function getHomePlusInfoData() {
+    const result = await serviceRequest.get({ url: '/home/plus' });
+    return result;
+}

@@ -2,10 +2,10 @@ import PropTypes from 'prop-types'
 import React, { memo, useState } from 'react'
 import classnames from 'classnames'
 import { SectionTabsWrapper } from './style'
-import ScrollView from '@/base-ui/scrool-view'
+import ScrollView from '@/base-ui/scroll-view'
 
 const SectionTabs = memo((props) => {
-    const { tabNames = [], tabItemClick } = props
+    const { tabNames = [], width = 30, tabItemClick } = props
     const [currentIndex, setCurrentIndex] = useState(0)
 
     function tabItemClickHandle(name, index) {
@@ -15,7 +15,7 @@ const SectionTabs = memo((props) => {
 
     return (
         <SectionTabsWrapper>
-            <ScrollView>
+            <ScrollView scrollWidth={width}>
                 {
                     tabNames.map((tabName, index) => (
                         <div
@@ -33,6 +33,7 @@ const SectionTabs = memo((props) => {
 })
 
 SectionTabs.propTypes = {
+    width: PropTypes.number,
     tabNames: PropTypes.array
 }
 

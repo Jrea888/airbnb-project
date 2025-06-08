@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ScrollViewWrapper = styled.div`
     position: relative;
-    width: 480px;
+    width: ${(props) => props.width}%;
 
     .scroll {
         overflow: hidden;
@@ -28,7 +28,7 @@ export const ScrollViewWrapper = styled.div`
         border-radius: 50%;
         border: 1px solid #d8d8d8;
         background-color: #fff;
-        box-shadow: 0px 1px 1px 1px rgba(0,0,0,.14);
+        box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.14);
 
         &.left-arrow {
             left: 0;
@@ -40,4 +40,4 @@ export const ScrollViewWrapper = styled.div`
             transform: translate(50%, -50%);
         }
     }
-`
+`;
