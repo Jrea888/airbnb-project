@@ -1,9 +1,25 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from "react";
+import { EntirePageWrapper } from "./style";
+import EntireTopFilter from "./component/entire-top-filter";
+import EntireRooms from "./component/entire-rooms";
+import EntirePagination from "./component/entire-pagination";
+import { useDispatch } from "react-redux";
+import { fetchEntireRoomListAction } from "@/store/modules/entire/actionsCreators";
 
 const EntirePage = memo(() => {
-  return (
-    <div>EntirePage</div>
-  )
-})
+    // 发送网络请求数据
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(fetchEntireRoomListAction())
+    }, [dispatch])
 
-export default EntirePage
+    return (
+        <EntirePageWrapper>
+            <EntireTopFilter />
+            <EntireRooms />
+            <EntirePagination />
+        </EntirePageWrapper>
+    );
+});
+
+export default EntirePage;
