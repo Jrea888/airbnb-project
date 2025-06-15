@@ -5,11 +5,12 @@ import RoomItem from "@/components/room-item";
 
 const EntireRooms = memo((props) => {
     // 从Reduce中获取数据
-    const {roomList, totalCount, currentPage} = useSelector((state) => {
+    const {roomList, totalCount, isLoading} = useSelector((state) => {
         return {
             roomList: state.entire.roomList,
             totalCount: state.entire.totalCount,
             currentPage: state.entire.currentPage,
+            isLoading: state.entire.isLoading,
         }
     }, shallowEqual)
 
@@ -20,13 +21,15 @@ const EntireRooms = memo((props) => {
                 {
                     roomList.map(v => {
                         return (
-                            <div className="entire-room-item">
-                                <RoomItem key={v._id} itemData={v} />
+                            <div className="entire-room-item"  key={v._id}>
+                                <RoomItem itemData={v} />
                             </div>
                         )
                     })
                 }
             </div>
+            {/* 加载loading */}
+            {isLoading &&  <div className="mask"></div>}
         </EntireRoomsWrapper>
     );
 });

@@ -56,4 +56,72 @@ export const RoomItemWrapper = styled.div`
 
         .extra {}
     }
+
+    .slider {
+        position: relative;
+        cursor: pointer;
+
+        .control {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: none;
+            z-index: 1;
+            color: #fff;
+
+            .icon-btns {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 84px;
+                height: 100%;
+            }
+
+            .left {
+                background: linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.25)) 100%;
+            }
+
+            .right {
+                background: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.25)) 100%;
+            }
+
+        }
+
+        &:hover .control {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .indicator {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            z-index: 2;
+            width: 37%;
+            padding: 0 4px;
+            box-sizing: border-box;
+
+            .dot {
+                width: 8px;
+                height: 8px;
+                margin: 0 6px;
+                border-radius: 50%;
+                background-color: #fff;
+                transition: width 0.3s ease, height 0.3s ease;
+
+                &.active {
+                    width: 10px;
+                    height: 10px;
+                }
+
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
 `;
