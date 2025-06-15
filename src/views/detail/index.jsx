@@ -1,9 +1,13 @@
-import React, { memo } from 'react'
+import React, { memo } from "react";
+import { DetailWrapper } from "./style";
+import DetailPictures from "./component/detail-pictures";
 
 const DetailPage = memo(() => {
-  return (
-    <div>DetailPage</div>
-  )
-})
+    return (
+        <DetailWrapper>
+            <DetailPictures></DetailPictures>
+        </DetailWrapper>
+    );
+});
 
-export default DetailPage
+export default DetailPage;

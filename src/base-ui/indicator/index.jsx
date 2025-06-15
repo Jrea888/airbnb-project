@@ -11,7 +11,6 @@ const Indictor = memo((props) => {
         // 1.获取数据距离
         const selectedItemOffsetLeft = selectedItemElement.offsetLeft
         const selectedItemClientWidth = selectedItemElement.clientWidth
-        console.log(selectedItemOffsetLeft, selectedItemClientWidth)
         // 2.获取容器距离
         const contentWidth = contentRef.current.clientWidth
         const contentScrollWidth = contentRef.current.scrollWidth

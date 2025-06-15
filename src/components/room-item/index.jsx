@@ -10,13 +10,12 @@ import IconArrowRight from "@/assets/svg/icon_arrow_right";
 import Indictor from "@/base-ui/indicator";
 
 const RoomItem = memo((props) => {
-    const { itemData } = props;
+    const { itemData, itemClick } = props;
     const [selectIndex, setSelectIndex] = useState(0);
     const sliderRef = useRef();
 
     // 轮播图按钮点击
-    function controlClickHandle(isRight = true) {
-        console.log(isRight, '------', sliderRef.current);
+    function controlClickHandle(isRight = true, event) {
         isRight ? sliderRef.current.next() : sliderRef.current.prev();
 
         // 处理轮播图指示器，计算最新索引
@@ -29,6 +28,15 @@ const RoomItem = memo((props) => {
             newIndex = 0;
         }
         setSelectIndex(newIndex);
+
+        // 阻止冒泡，防止点击按钮时触发轮播图点击事件
+        event.stopPropagation();
+    }
+
+    function roomItemClickHandle() {
+        if (itemClick) {
+            itemClick(itemData)
+        }
     }
 
     const pictureElement = (
@@ -41,10 +49,10 @@ const RoomItem = memo((props) => {
         <div className="slider">
             {/*按钮区域 */}
             <div className="control">
-                <div className="left icon-btns" onClick={e => controlClickHandle(false)}>
+                <div className="left icon-btns" onClick={e => controlClickHandle(false, e)}>
                     <IconArrowLeft width="30" height="30" />
                 </div>
-                <div className="right icon-btns" onClick={e => controlClickHandle(true)}>
+                <div className="right icon-btns" onClick={e => controlClickHandle(true, e)}>
                     <IconArrowRight width="30" height="30" />
                 </div>
             </div>
@@ -74,11 +82,10 @@ const RoomItem = memo((props) => {
     )
 
     return (
-        <RoomItemWrapper color={itemData?.verify_info?.text_color || "#39576a"}>
+        <RoomItemWrapper color={itemData?.verify_info?.text_color || "#39576a"} onClick={roomItemClickHandle}>
             {
                  !itemData.picture_urls ? pictureElement : sliderElement
             }
-
             <div className="desc">{itemData.verify_info.messages.join(" · ")}</div>
             <div className="name">{itemData.name}</div>
             <div className="price">¥{itemData.price} / 晚</div>
@@ -99,6 +106,7 @@ const RoomItem = memo((props) => {
 });
 
 RoomItem.propTypes = {
+    itemClick: PropTypes.func,
     itemData: PropTypes.object
 };
 export default RoomItem;
