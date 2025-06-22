@@ -22,6 +22,7 @@ export const DetailPictureWrapper = styled.div`
         background-color: #fff;
         border-radius: 12px;
         overflow: hidden;
+        height: 800px;
 
         &:hover {
             .mask-cover {
@@ -53,7 +54,6 @@ export const DetailPictureWrapper = styled.div`
                 img {
                     width: 100%;
                     height: 100%;
-                    object-fit: cover;
                     transition:  transform 200ms ease;
                 }
 

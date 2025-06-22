@@ -5,6 +5,8 @@ export const EntireTopFilterWrapper = styled.div`
     align-items: center;
     width: 100%;
     height: 54px;
+    margin-top: 96px;
+    background-color: #fff;
     border-bottom: 1px solid #f2f2f2;
 
     .filter {

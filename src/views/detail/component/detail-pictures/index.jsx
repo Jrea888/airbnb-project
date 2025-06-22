@@ -31,7 +31,7 @@ const DetailPictures = memo((props) => {
                     {
                         detailInfo?.picture_urls?.slice(1, 5).map(item => {
                             return (
-                                <div className="item">
+                                <div className="item" key={item}>
                                     <img src={item} alt="" />
                                     <div className="mask-cover"></div>
                                 </div>

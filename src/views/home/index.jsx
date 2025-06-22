@@ -12,6 +12,7 @@ import HighScoreSection from "./sections/high-score-section";
 import DiscountHotSection from "./sections/discount-hot-section";
 import ToGoInspiration from "./sections/to-go-inspiration-section";
 import PlusInfoSection from "./sections/plus-info-section";
+import { changeConfigHeader } from "@/store/modules/header";
 
 const HomePage = memo(() => {
     // 发送网络数据
@@ -23,6 +24,7 @@ const HomePage = memo(() => {
         dispatch(fetchHomeHighScore());
         dispatch(fetchHomeGoodPrice());
         dispatch(fetchHomePlusInfo());
+        dispatch(changeConfigHeader({ isFixed: true }));
     }, [dispatch]);
 
     // 获取store中的数据
