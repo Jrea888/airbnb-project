@@ -9,7 +9,6 @@ const headerSplice = createSlice({
     },
     reducers: {
         changeConfigHeader(state, { payload }) {
-            console.log(payload, '-----payload')
             state.config = payload
         }
     }

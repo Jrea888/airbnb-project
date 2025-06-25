@@ -3,14 +3,12 @@ import styled from "styled-components";
 export const HeaderCenterWrapper = styled.div`
     position: relative;
     flex: 1;
+    height: 46px;
 
     .search-areas {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
         width: 345px;
         height: 46px;
+        margin: 0 auto;
         border-radius: 40px;
         box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 2px,
             rgba(0, 0, 0, 0.05) 0px 4px 12px;
@@ -96,85 +94,50 @@ export const HeaderCenterWrapper = styled.div`
         }
     }
 
-    .areas {
-        display: grid;
-        gap: 2px;
-        grid-template-columns: minmax(0, 2fr) 1px minmax(0, 1fr) 1px minmax(
-                0,
-                1fr
-            ) 1px minmax(0, 2fr);
-        /* width: 850px; */
-        height: 66px;
-        align-items: center;
-        text-align: center;
-        border-radius: 32px;
-        border: 1px solid #ddd;
-        box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 2px,
-            rgba(0, 0, 0, 0.05) 0px 4px 12px;
-        ${(props) => props.theme.mixin.boxShadow};
+    .search-detail {
+        position: relative;
+        transform-origin: 50% 0;
+        will-change: transform, opacity;
+        display: flex;
+        flex-direction: column;
+    }
 
-        .area-item {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            height: 100%;
-            cursor: pointer;
-            padding-left: 32px;
+    /* 动画 */
+    .fade-detail-exit {
+        transform: scale(1.0) translateY(0);
+        opacity: 1;
+    }
 
-            &:hover {
-                border-radius: 32px;
-                background-color: #ebebeb;
-            }
+    .fade-detail-exit-active {
+        transition: all 250ms ease;
+        transform: scale(0.35, 0.727273) translateY(-58px);
+        opacity: 0;
+    }
 
-            .label {
-                font-weight: 500;
-                color: ${(props) => props.theme.text.secondaryColor};
-                font-size: ${(props) => props.theme.size.fontSize_12};
-            }
+    .fade-detail-enter {
+        transform: scale(0.35, 0.727273) translateY(-58px);
+        opacity: 0;
+    }
 
-            .tip {
-                margin-top: 4px;
-                color: ${(props) => props.theme.text.tertiaryColor};
-                font-size: ${(props) => props.theme.size.fontSize_14};
-            }
+    .fade-detail-enter-active {
+        transition: all 250ms ease;
+        transform: scale(1.0) translateY(0);
+        opacity: 1;
+    }
 
-            .search {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 100%;
+    .fade-areas-enter {
+        transform: scale(2.85714, 1.375) translateY(58px);
+        opacity: 0;
+    }
 
-                .people {
-                    display: flex;
-                    align-items: flex-start;
-                    flex-direction: column;
-                }
+    .fade-areas-enter-active {
+        transition: all 250ms ease;
+        transform: scale(1.0) translateY(0);
+        opacity: 1;
+    }
 
-                .icon-search {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 80px;
-                    height: 48px;
-                    border-radius: 24px;
-                    background-color: ${(props) =>
-                        props.theme.color.primaryColor};
-                    color: #fff;
-                    margin-right: 10px;
-
-                    .text {
-                        margin-left: 6px;
-                        font-size: ${(props) => props.theme.size.fontSize_16};
-                    }
-                }
-            }
-        }
-
-        .line {
-            height: 32px;
-            background-color: #ddd;
-            transition: z-index 0s 0.3s; /* 延迟恢复避免闪烁 */
-        }
+    .fade-areas-exit {
+        opacity: 0;
+        display: none;
     }
 `;
