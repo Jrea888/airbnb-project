@@ -9,11 +9,11 @@ import { changeConfigHeader } from "@/store/modules/header";
 
 const EntirePage = memo(() => {
     // 发送网络请求数据
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(fetchEntireRoomListAction())
-        dispatch(changeConfigHeader({ isFixed: true }))
-    }, [dispatch])
+        dispatch(fetchEntireRoomListAction());
+        dispatch(changeConfigHeader({ isFixed: true, topAlpha: false }));
+    }, [dispatch]);
 
     return (
         <EntirePageWrapper>

@@ -24,7 +24,7 @@ const HomePage = memo(() => {
         dispatch(fetchHomeHighScore());
         dispatch(fetchHomeGoodPrice());
         dispatch(fetchHomePlusInfo());
-        dispatch(changeConfigHeader({ isFixed: true }));
+        dispatch(changeConfigHeader({ isFixed: true, topAlpha: true}));
     }, [dispatch]);
 
     // 获取store中的数据

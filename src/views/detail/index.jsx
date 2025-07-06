@@ -7,8 +7,8 @@ import { changeConfigHeader } from "@/store/modules/header";
 const DetailPage = memo(() => {
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(changeConfigHeader({ isFixed: false }));
-    }, [dispatch])
+        dispatch(changeConfigHeader({ isFixed: false, topAlpha: false }));
+    }, [dispatch]);
 
     return (
         <DetailWrapper>

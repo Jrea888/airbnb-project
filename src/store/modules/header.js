@@ -1,18 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const headerSplice = createSlice({
-    name: 'header',
+    name: "header",
     initialState: {
         config: {
-            isFixed: false
-        }
+            isFixed: false,
+            topAlpha: false,
+        },
     },
     reducers: {
         changeConfigHeader(state, { payload }) {
-            state.config = payload
-        }
-    }
-})
+            state.config = payload;
+        },
+    },
+});
 
-export const { changeConfigHeader } = headerSplice.actions
-export default headerSplice.reducer
+export const { changeConfigHeader } = headerSplice.actions;
+export default headerSplice.reducer;
