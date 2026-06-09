@@ -8,7 +8,7 @@ import classNames from "classnames";
 import { useScrollPosition } from "@/hooks";
 
 const AppHeader = memo(() => {
-    const [isSearch, setIsSearch] = useState(true)
+    const [isSearch, setIsSearch] = useState(false)
     const {config} = useSelector((state) => {
         return {
             config: state.header.config
