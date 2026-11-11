@@ -9,7 +9,9 @@ const theme = {
         tertiaryColor: "#6A6A6A",
     },
     font: {
-        fontFamily: `${'Airbnb Cereal VF', 'Circular', '-apple-system', 'BlinkMacSystemFont', 'Roboto', 'Helvetica Neue', 'sans-serif'}`,
+        // 原来写成了模板字符串里套逗号表达式，`${'a', 'b', 'c'}` 只会取最后一个值，
+        // 结果 fontFamily 实际只剩 'sans-serif'；改成数组 join
+        fontFamily: ['Airbnb Cereal VF', 'Circular', '-apple-system', 'BlinkMacSystemFont', 'Roboto', 'Helvetica Neue', 'sans-serif'].join(', '),
     },
     hover: {
         color: "#ebebeb",

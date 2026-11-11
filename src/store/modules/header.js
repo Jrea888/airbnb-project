@@ -13,6 +13,8 @@ const headerSplice = createSlice({
             state.config = payload;
         },
     },
+    extraReducers: {},
+    middleware: {},
 });
 
 export const { changeConfigHeader } = headerSplice.actions;

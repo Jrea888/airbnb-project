@@ -1,4 +1,4 @@
-import React, { memo, useRef, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import { AppHeaderWrapper, SearchAreaWrapper } from "./style";
 import HeaderLeft from "./component/header-left";
 import HeaderCenter from "./component/header-center";
@@ -17,15 +17,22 @@ const AppHeader = memo(() => {
     const { isFixed } = config
 
     const { scrollY } = useScrollPosition()
-    const prevY = useRef(0)
-    // 如果搜索框没有显示时，则一直记录当前滚动距离
-    if (!isSearch) {
-        prevY.current = scrollY
-    }
-    // 如果显示搜索状态下 且当滚动距离大于当前滚动距离的绝对值大于30时，则隐藏搜索框
-    if (isSearch && Math.abs(scrollY - prevY.current) > 30) {
-        setIsSearch(false)
-    }
+    const prevY = useRef(scrollY)
+
+    // 搜索框展开后，滚动距离超过 30px 自动收起。
+    // 原实现把这段判断直接写在组件函数体里（渲染期 setState + 渲染期修改 ref），
+    // 在 StrictMode 双次渲染 / 并发渲染下行为不可靠，因此挪进 effect。
+    useEffect(() => {
+        // 未展开时持续记录当前位置，作为展开后的比较基准
+        if (!isSearch) {
+            prevY.current = scrollY
+            return
+        }
+
+        if (Math.abs(scrollY - prevY.current) > 30) {
+            setIsSearch(false)
+        }
+    }, [scrollY, isSearch])
 
     return (
         <AppHeaderWrapper className={classNames({fixed: isFixed})}>

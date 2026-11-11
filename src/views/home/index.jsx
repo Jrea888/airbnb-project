@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { isEmptyObject } from "@/utils";
+import { isNotEmptyObject } from "@/utils";
 import { fetchHomeGoodPrice, fetchHomeRecommend, fetchHomeHighScore, fetchHomeDiscountHot, fetchHomeToGoInspiration, fetchHomePlusInfo} from "@/store/modules/home";
 
 import {HomeWrapper} from './style'
@@ -39,23 +39,24 @@ const HomePage = memo(() => {
         };
     }, shallowEqual);
 
+    // 有数据才渲染对应板块（原函数叫 isEmptyObject 但语义是「非空」，已改名）
     return (
         <HomeWrapper>
             <HomeBanner />
 
             <div className="home-content">
                 {/* 折扣热门房源 */}
-                {isEmptyObject(discountHotInfo) && <DiscountHotSection infoData={discountHotInfo} />}
+                {isNotEmptyObject(discountHotInfo) && <DiscountHotSection infoData={discountHotInfo} />}
                 {/* 推荐房间 */}
-                {isEmptyObject(recommendInfo) && <RecommendSection infoData={recommendInfo} />}
+                {isNotEmptyObject(recommendInfo) && <RecommendSection infoData={recommendInfo} />}
                 {/* 去旅游灵感 */}
-                {isEmptyObject(toGoInspirationInfo) && <ToGoInspiration infoData={toGoInspirationInfo} />}
+                {isNotEmptyObject(toGoInspirationInfo) && <ToGoInspiration infoData={toGoInspirationInfo} />}
                 {/* 高价房源信息 */}
-                {isEmptyObject(goodPriceInfo) && <GoodPriceSection infoData={goodPriceInfo} />}
+                {isNotEmptyObject(goodPriceInfo) && <GoodPriceSection infoData={goodPriceInfo} />}
                 {/* 高分好评房源 */}
-                {isEmptyObject(highScoreInfo) && <HighScoreSection infoData={highScoreInfo} />}
+                {isNotEmptyObject(highScoreInfo) && <HighScoreSection infoData={highScoreInfo} />}
                 {/* Plus房源信息 */}
-                {isEmptyObject(plusInfo) && <PlusInfoSection infoData={plusInfo} />}
+                {isNotEmptyObject(plusInfo) && <PlusInfoSection infoData={plusInfo} />}
             </div>
 
             {/* 分类信息 */}

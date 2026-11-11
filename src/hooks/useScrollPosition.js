@@ -14,7 +14,8 @@ export default function useScrollPosition() {
             setScrollY(window.scrollY);
         }, 100);
 
-        window.addEventListener("scroll", handleScroll);
+        // passive: true，让浏览器不必等监听器执行就能继续滚动，减少滚动卡顿
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };

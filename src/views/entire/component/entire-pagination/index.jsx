@@ -3,6 +3,7 @@ import Pagination from '@mui/material/Pagination'
 import { EntirePaginationWrapper } from "./style";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import {fetchEntireRoomListAction} from '@/store/modules/entire/actionsCreators'
+import { PAGE_SIZE } from "@/constants";
 
 const EntirePagination = memo((props) => {
     const { totalCount, currentPage } = useSelector((state) => {
@@ -12,10 +13,10 @@ const EntirePagination = memo((props) => {
         }
     }, shallowEqual)
 
-    // 计算总页数
-    const totalPage = Math.ceil(totalCount / 20) // 总页数
-    const startCount = currentPage * 20 + 1 // 起始条数
-    const endCount = (currentPage + 1) * 20 // 结束条数
+    // 每页条数统一取常量，避免和请求里的 offset 计算脱钩
+    const totalPage = Math.ceil(totalCount / PAGE_SIZE) // 总页数
+    const startCount = currentPage * PAGE_SIZE + 1 // 起始条数
+    const endCount = Math.min((currentPage + 1) * PAGE_SIZE, totalCount) // 结束条数（最后一页不超出总数）
 
     const dispatch = useDispatch()
     function pageChangeHandle(event, pageCount) {
@@ -28,7 +29,7 @@ const EntirePagination = memo((props) => {
     return (
         <EntirePaginationWrapper>
             {
-                totalCount > 20 && (
+                totalCount > PAGE_SIZE && (
                     <div className="bottom-info">
                         <Pagination count={totalPage} onChange={pageChangeHandle} />
                         <div className="desc">
@@ -40,7 +41,5 @@ const EntirePagination = memo((props) => {
         </EntirePaginationWrapper>
     );
 });
-
-EntirePagination.propTypes = {};
 
 export default EntirePagination;

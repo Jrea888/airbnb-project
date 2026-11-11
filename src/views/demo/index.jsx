@@ -1,11 +1,8 @@
-import PropTypes from "prop-types";
-import React, { memo, useRef, useState } from "react";
-import { DemoWrapper } from "./styles";
-import AppHeader from "@/components/app-header";
-import AppFooter from "@/components/app-footer";
+import React, { memo, useState } from "react";
 import Indictor from "@/base-ui/indicator";
+import { DemoWrapper } from "./styles";
 
-const DemoPage = memo((props) => {
+const DemoPage = memo(() => {
     const list = [
         "仙逆",
         "斗破苍穹",
@@ -21,41 +18,41 @@ const DemoPage = memo((props) => {
 
     const [selectIndex, setSelectIndex] = useState(0);
     function controlClickHandle(isNext = true) {
-        let nexIndex = isNext ? selectIndex + 1 : selectIndex - 1
+        let nexIndex = isNext ? selectIndex + 1 : selectIndex - 1;
         if (nexIndex < 0) {
-            nexIndex = list.length -1
+            nexIndex = list.length - 1;
         }
         if (nexIndex > list.length - 1) {
-            nexIndex = 0
+            nexIndex = 0;
         }
-        setSelectIndex(nexIndex)
+        setSelectIndex(nexIndex);
     }
 
     return (
         <DemoWrapper>
             <div className="content">
                 <div>
-                    <button onClick={e => controlClickHandle(false)}>上一个</button>
-                    <button onClick={e => controlClickHandle(true)}>下一个</button>
+                    <button onClick={(e) => controlClickHandle(false)}>
+                        上一个
+                    </button>
+                    <button onClick={(e) => controlClickHandle(true)}>
+                        下一个
+                    </button>
                 </div>
                 <div className="carousel-list">
                     <Indictor selectIndex={selectIndex}>
-                        {
-                            list.map(item => {
-                                return (
-                                    <div className="item" key={item}>
-                                        {item}
-                                    </div>
-                                )
-                            })
-                        }
+                        {list.map((item) => {
+                            return (
+                                <div className="item" key={item}>
+                                    {item}
+                                </div>
+                            );
+                        })}
                     </Indictor>
                 </div>
             </div>
         </DemoWrapper>
     );
 });
-
-DemoPage.propTypes = {};
 
 export default DemoPage;

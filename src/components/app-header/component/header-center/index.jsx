@@ -8,7 +8,7 @@ import { HeaderCenterWrapper } from "./style";
 
 const HeaderCenter = memo((props) => {
     const { isSearch, searchClick } = props
-    const [setTabIndex, setSetTabIndex] = useState(0)
+    const [currentTabIndex, setCurrentTabIndex] = useState(0)
     const searchAreasRef = useRef(null)
     const searchDetailRef = useRef(null)
     const titles = SearchTitles.map(v => v.title)
@@ -45,7 +45,7 @@ const HeaderCenter = memo((props) => {
                         </div>
                         <div className="icon-search">
                             <div className="image-icon">
-                                <IconSearch with="12" height="12" />
+                                <IconSearch width="12" height="12" />
                             </div>
                         </div>
                     </div>
@@ -59,8 +59,8 @@ const HeaderCenter = memo((props) => {
                 nodeRef={searchDetailRef}
             >
                 <div ref={searchDetailRef} className="search-detail">
-                    <SearchTabs titles={titles} tabClick={setSetTabIndex} />
-                    <SearchSections currentIndex={setTabIndex} searchInfos={SearchTitles[setTabIndex].searchInfos} />
+                    <SearchTabs titles={titles} tabClick={setCurrentTabIndex} />
+                    <SearchSections currentIndex={currentTabIndex} searchInfos={SearchTitles[currentTabIndex].searchInfos} />
                 </div>
             </CSSTransition>
         </HeaderCenterWrapper>

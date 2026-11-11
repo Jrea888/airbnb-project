@@ -13,12 +13,17 @@ import "normalize.css";
 import "@/assets/styles/index.less";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-    <Provider store={store}>
-        <ThemeProvider theme={theme}>
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
-        </ThemeProvider>
-    </Provider>
-);
+
+const AppPage = () => {
+    return (
+        <Provider store={store}>
+            <ThemeProvider theme={theme}>
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
+            </ThemeProvider>
+        </Provider>
+    );
+};
+
+root.render(<AppPage />);

@@ -1,5 +1,6 @@
 import * as actionTypes from "./constants";
 import { getEntireRoomList } from "@/services";
+import { PAGE_SIZE } from "@/constants";
 
 export const changeCurrentPageAction = (currentPage) => ({
     currentPage,
@@ -28,7 +29,7 @@ export const fetchEntireRoomListAction = (currentPage = 0) => {
 
         // 获取房间列表
         dispatch(changeLoadingAction(true));
-        const result = await getEntireRoomList(currentPage * 20);
+        const result = await getEntireRoomList(currentPage * PAGE_SIZE);
         dispatch(changeLoadingAction(false));
 
         // 设置房间列表
