@@ -13,8 +13,12 @@ const headerSplice = createSlice({
             state.config = payload;
         },
     },
-    extraReducers: {},
-    middleware: {},
+    // 如需监听其他 slice 的 action（跨 slice 响应），必须使用 builder 回调写法，不能再用对象写法：
+    // extraReducers: (builder) => {
+    //     builder.addCase(fetchSomething.fulfilled, (state, { payload }) => {
+    //         state.xxx = payload;
+    //     });
+    // },
 });
 
 export const { changeConfigHeader } = headerSplice.actions;

@@ -72,8 +72,14 @@ const detailSlice = createSlice({
         changeDetailInfoAction(state, { payload }) {
             state.detailInfo = payload;
         },
+        // 恢复到详情页内置的静态示例数据。
+        // 首页卡片只带列表字段（没有图集、详情描述等），
+        // 从首页进详情时用这份静态数据，避免详情页空白。
+        resetDetailInfoAction(state) {
+            state.detailInfo = detailSlice.getInitialState().detailInfo;
+        },
     },
 });
 
-export const { changeDetailInfoAction } = detailSlice.actions;
+export const { changeDetailInfoAction, resetDetailInfoAction } = detailSlice.actions;
 export default detailSlice.reducer;

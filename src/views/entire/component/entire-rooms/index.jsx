@@ -1,13 +1,12 @@
-import React, { memo, useCallback } from "react";
+import React, { memo } from "react";
 import { EntireRoomsWrapper } from "./style";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
 import RoomItem from "@/components/room-item";
-import { useNavigate } from "react-router-dom";
-import { changeDetailInfoAction } from "@/store/modules/detail";
+import { useRoomItemClick } from "@/hooks";
 
 const EntireRooms = memo((props) => {
     // 从Reduce中获取数据
-    const {roomList, totalCount, isLoading} = useSelector((state) => {
+    const { roomList, totalCount, isLoading } = useSelector((state) => {
         return {
             roomList: state.entire.roomList,
             totalCount: state.entire.totalCount,
@@ -16,12 +15,8 @@ const EntireRooms = memo((props) => {
         }
     }, shallowEqual)
 
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
-    const roomItemClickHandle = useCallback((itemData) => {
-        dispatch(changeDetailInfoAction(itemData))
-        navigate('/detail')
-    }, [navigate, dispatch])
+    // 点击房源 → 写入 detail 并跳转 /detail（与首页各 section 共用同一套逻辑）
+    const roomItemClickHandle = useRoomItemClick()
 
     return (
         <EntireRoomsWrapper>
@@ -30,7 +25,7 @@ const EntireRooms = memo((props) => {
                 {
                     roomList.map(v => {
                         return (
-                            <div className="entire-room-item"  key={v._id}>
+                            <div className="entire-room-item" key={v._id}>
                                 <RoomItem itemData={v} itemClick={roomItemClickHandle} />
                             </div>
                         )
@@ -38,7 +33,7 @@ const EntireRooms = memo((props) => {
                 }
             </div>
             {/* 加载loading */}
-            {isLoading &&  <div className="mask"></div>}
+            {isLoading && <div className="mask"></div>}
         </EntireRoomsWrapper>
     );
 });
